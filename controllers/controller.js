@@ -1,24 +1,24 @@
 const model = require('../models/model');
 
-exports.doSomething1 = async (req, res) => {
+exports.doSomething1 = async (ctx) => {
   try {
     const data = await model.getData();
-    res.status(200);
-    res.send(data);
+    ctx.status(200);
+    ctx.body(data);
   } catch (e) {
     console.log('e', e);
-    res.sendStatus(500);
+    res.status(500);
   }
 };
 
-exports.doSomething2 = (req, res) => {
+exports.doSomething2 = (ctx) => {
   try {
-    console.log(req.body)
-    model.postData(req.body.data);
-    res.status(201);
-    res.send();
+    console.log(ctx.body)
+    model.postData(ctx.body.data);
+    ctx.status(201);
+
   } catch (e) {
     console.log('e', e);
-    res.sendStatus(500);
+    ctx.status(500);
   }
 };

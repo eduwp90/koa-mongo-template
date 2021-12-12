@@ -1,5 +1,5 @@
-const router = require('express').Router();
-const controller = require('./controllers/controller');
+const Router = require('koa-router');
+const router = new Router();
 
 router.get('/', controller.doSomething1);
 router.post('/', controller.doSomething2);
